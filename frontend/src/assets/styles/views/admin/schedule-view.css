@@ -1,0 +1,78 @@
+/* Admin ScheduleView */
+.schedule-page { padding: 24px; }
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1f36;
+  margin: 0;
+}
+
+.header-filters { display: flex; gap: 12px; }
+
+.header-filters select {
+  padding: 8px 12px;
+  border: 1px solid #e5e9f0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1a1f36;
+  background: #fff;
+  cursor: pointer;
+}
+
+.loading-state { text-align: center; padding: 60px; color: #9ca3af; }
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-day {
+  min-height: 110px;
+  background: #f9fafb;
+  border: 1px solid #e5e9f0;
+  border-radius: 10px;
+  padding: 10px;
+  transition: box-shadow 0.15s;
+}
+
+.calendar-day.empty       { background: transparent; border: none; }
+.calendar-day.has-schedule { background: #f0f4ff; border-color: #c7d7fa; }
+.calendar-day.today        { border-color: #1a56db; box-shadow: 0 0 0 2px #1a56db22; }
+
+.day-number { font-size: 13px; font-weight: 700; color: #1a1f36; margin-bottom: 6px; }
+.today .day-number { color: #1a56db; }
+
+.clinician-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slots-count { font-size: 11px; color: #6b7280; margin-bottom: 6px; }
+
+.slot-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+
+.slot-tag {
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.slot-tag.booked { background: #fee2e2; color: #dc2626; }
+.slot-tag.more   { background: #f3f4f6; color: #6b7280; }
+.day-empty       { font-size: 11px; color: #d1d5db; margin-top: 8px; }

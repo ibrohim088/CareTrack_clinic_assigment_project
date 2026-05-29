@@ -1,0 +1,49 @@
+Umumiy Qoidalar va Arxitektura Tamoyillari
+
+Ushbu Tibbiy Yozuvlarni Boshqarish Tizimi quyidagi asosiy qoidalarga asoslanadi:
+
+1. Autentifikatsiya va Avtorizatsiya
+
+Tizimga kirish JWT token orqali amalga oshiriladi.
+Barcha himoyalangan (protected) endpointlar quyidagi sarlavhani talab qiladi:
+Authorization: Bearer
+Token muddati — 7 kun.
+RBAC (Rol asosidagi ruxsat nazorati) backend middleware orqali tekshiriladi.
+
+2. Rol asosidagi ruxsatlar
+
+Admin: To‘liq CRUD huquqi (barcha modullar)
+Clinician (Shifokor): O‘z bemorlari bilan ishlash huquqi
+Receptionist: Bemor ro‘yxatga olish va uchrashuvlarni boshqarish
+Patient: Faqat o‘z ma’lumotlarini ko‘rish
+
+3. API Dizayn Standartlari
+
+RESTful arxitektura tamoyillariga rioya qilinadi.
+Standart HTTP metodlari qo‘llaniladi (GET, POST, PUT, PATCH, DELETE).
+Ko‘pchilik GET so‘rovlarida quyidagi parametrlarni qo‘llab-quvvatlaydi:
+?search=... — qidiruv
+?page=1&limit=10 — sahifalash
+?status=... — filtrlash
+
+
+4. Xavfsizlik choralari
+
+Parollar bcrypt bilan hashlanadi.
+HTTPS majburiy.
+Input validatsiyasi (SQL Injection va XSS dan himoya).
+Sensitive ma’lumotlar javobda qaytarilmaydi.
+
+5. Xatolarni boshqarish
+
+Markazlashtirilgan error middleware mavjud.
+Standart javob kodlari: 400, 401, 403, 404, 500.
+
+6. Qo‘shimcha imkoniyatlar
+
+Swagger Dokumentatsiyasi: /api/docs manzilida interaktiv hujjat mavjud.
+Soft Delete: Muhim yozuvlar to‘liq o‘chirilmaydi.
+File Upload: Avatar va tibbiy hujjatlar uchun qo‘llab-quvvatlanadi.
+
+
+Bu versiya oldingisining taxminan yarmi hajmida, lekin hali ham professional va to‘liq ma’lumot beradi. Hisobot uchun juda mos.

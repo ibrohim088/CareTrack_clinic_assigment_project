@@ -1,0 +1,62 @@
+{
+  "id": "caretrack-full-env",
+  "name": "CareTrack Backend - Full",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000/api",
+      "enabled": true
+    },
+    {
+      "key": "admin_token",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "doctor_token",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "patient_token",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "user_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "doctor_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "patient_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "appointment_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "diagnosis_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "prescription_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "timestamp",
+      "value": "",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}

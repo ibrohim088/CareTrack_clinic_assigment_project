@@ -1,0 +1,312 @@
+{
+  "info": {
+    "name": "CareTrack Clinic - FULL Backend API",
+    "description": "100% To'liq - Barcha metodlar va route'lar",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "🔐 AUTH",
+      "item": [
+        {
+          "name": "01. Register Patient",
+          "method": "POST",
+          "url": "{{base_url}}/auth/register",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"fullName\": \"Test Patient {{timestamp}}\",\n  \"email\": \"patient{{timestamp}}@caretrack.com\",\n  \"password\": \"123456\",\n  \"phone\": \"+998901234567\",\n  \"role\": \"patient\"\n}"
+          }
+        },
+        {
+          "name": "02. Login Admin",
+          "method": "POST",
+          "url": "{{base_url}}/auth/login",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"admin@caretrack.com\",\n  \"password\": \"123456\"\n}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    pm.environment.set('admin_token', pm.response.json().data.token);",
+                  "    console.log('✅ Admin Token Saved');",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03. Login Doctor",
+          "method": "POST",
+          "url": "{{base_url}}/auth/login",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"doctor@caretrack.com\",\n  \"password\": \"123456\"\n}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    pm.environment.set('doctor_token', pm.response.json().data.token);",
+                  "    console.log('✅ Doctor Token Saved');",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04. Login Patient",
+          "method": "POST",
+          "url": "{{base_url}}/auth/login",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"patient@caretrack.com\",\n  \"password\": \"123456\"\n}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    pm.environment.set('patient_token', pm.response.json().data.token);",
+                  "    console.log('✅ Patient Token Saved');",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05. Get Me (Current User)",
+          "method": "GET",
+          "url": "{{base_url}}/auth/me"
+        }
+      ]
+    },
+    {
+      "name": "👤 USERS",
+      "item": [
+        {
+          "name": "Get All Users",
+          "method": "GET",
+          "url": "{{base_url}}/users",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{admin_token}}"
+            }
+          ]
+        },
+        {
+          "name": "Get User by ID",
+          "method": "GET",
+          "url": "{{base_url}}/users/{{user_id}}"
+        },
+        {
+          "name": "Update User",
+          "method": "PUT",
+          "url": "{{base_url}}/users/{{user_id}}",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"fullName\": \"Updated Name\"\n}"
+          }
+        },
+        {
+          "name": "Delete User",
+          "method": "DELETE",
+          "url": "{{base_url}}/users/{{user_id}}"
+        }
+      ]
+    },
+    {
+      "name": "🩺 DOCTORS",
+      "item": [
+        {
+          "name": "Get All Doctors",
+          "method": "GET",
+          "url": "{{base_url}}/doctors"
+        },
+        {
+          "name": "Get Doctor",
+          "method": "GET",
+          "url": "{{base_url}}/doctors/{{doctor_id}}"
+        },
+        {
+          "name": "Create Doctor",
+          "method": "POST",
+          "url": "{{base_url}}/doctors",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{admin_token}}"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"specialization\": \"Cardiology\",\n  \"licenseNumber\": \"DOC-{{timestamp}}\",\n  \"experience\": 7\n}"
+          }
+        },
+        {
+          "name": "Update Doctor",
+          "method": "PUT",
+          "url": "{{base_url}}/doctors/{{doctor_id}}"
+        },
+        {
+          "name": "Delete Doctor",
+          "method": "DELETE",
+          "url": "{{base_url}}/doctors/{{doctor_id}}"
+        }
+      ]
+    },
+    {
+      "name": "🧍 PATIENTS",
+      "item": [
+        {
+          "name": "Get All Patients",
+          "method": "GET",
+          "url": "{{base_url}}/patients"
+        },
+        {
+          "name": "Get Patient",
+          "method": "GET",
+          "url": "{{base_url}}/patients/{{patient_id}}"
+        },
+        {
+          "name": "Create Patient",
+          "method": "POST",
+          "url": "{{base_url}}/patients",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"dateOfBirth\": \"1995-05-20\",\n  \"gender\": \"male\"\n}"
+          }
+        },
+        {
+          "name": "Update Patient",
+          "method": "PUT",
+          "url": "{{base_url}}/patients/{{patient_id}}"
+        }
+      ]
+    },
+    {
+      "name": "📅 APPOINTMENTS",
+      "item": [
+        {
+          "name": "Get All Appointments",
+          "method": "GET",
+          "url": "{{base_url}}/appointments"
+        },
+        {
+          "name": "Get Appointment",
+          "method": "GET",
+          "url": "{{base_url}}/appointments/{{appointment_id}}"
+        },
+        {
+          "name": "Book Appointment",
+          "method": "POST",
+          "url": "{{base_url}}/appointments",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"doctor\": \"{{doctor_id}}\",\n  \"date\": \"2026-06-15\",\n  \"timeSlot\": \"10:00\",\n  \"reason\": \"Routine checkup\"\n}"
+          }
+        },
+        {
+          "name": "Update Status",
+          "method": "PATCH",
+          "url": "{{base_url}}/appointments/{{appointment_id}}/status",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"status\": \"confirmed\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔬 DIAGNOSES",
+      "item": [
+        {
+          "name": "Get All Diagnoses",
+          "method": "GET",
+          "url": "{{base_url}}/diagnoses"
+        },
+        {
+          "name": "Create Diagnosis",
+          "method": "POST",
+          "url": "{{base_url}}/diagnoses",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"patient\": \"{{patient_id}}\",\n  \"description\": \"Hypertension Stage 1\",\n  \"severity\": \"moderate\",\n  \"icdCode\": \"I10\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "💊 PRESCRIPTIONS",
+      "item": [
+        {
+          "name": "Get All Prescriptions",
+          "method": "GET",
+          "url": "{{base_url}}/prescriptions"
+        },
+        {
+          "name": "Create Prescription",
+          "method": "POST",
+          "url": "{{base_url}}/prescriptions",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"patient\": \"{{patient_id}}\",\n  \"medicines\": [\n    { \"name\": \"Losartan\", \"dosage\": \"50mg\", \"frequency\": \"Once daily\" }\n  ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "📋 MEDICAL RECORDS",
+      "item": [
+        {
+          "name": "Get All Medical Records",
+          "method": "GET",
+          "url": "{{base_url}}/medical-records"
+        },
+        {
+          "name": "Create Medical Record",
+          "method": "POST",
+          "url": "{{base_url}}/medical-records",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"patient\": \"{{patient_id}}\",\n  \"type\": \"lab\",\n  \"title\": \"Complete Blood Count\",\n  \"description\": \"All values normal\"\n}"
+          }
+        }
+      ]
+    }
+  ]
+}

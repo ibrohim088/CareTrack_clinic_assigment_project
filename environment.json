@@ -1,0 +1,74 @@
+{
+  "id": "caretrack-clinic-full-env",
+  "name": "CareTrack Clinic - Full Environment",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000/api",
+      "enabled": true
+    },
+    {
+      "key": "admin_token",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "clinician_token",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "patient_token",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "user_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "clinician_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "patient_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "appointment_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "diagnosis_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "prescription_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "medical_record_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "schedule_id",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "timestamp",
+      "value": "{{$timestamp}}",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2026-05-27T00:00:00.000Z",
+  "_postman_exported_using": "Postman/10"
+}

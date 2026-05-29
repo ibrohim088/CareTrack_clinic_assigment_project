@@ -1,0 +1,248 @@
+/* ============================================
+   CareTrack Clinic — Auth Pages CSS
+   Login, Register, ForgotPassword
+   ============================================ */
+
+/* ---- Auth container ---- */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  background: #f4f6fb;
+}
+
+/* ---- Left panel (branding) ---- */
+.auth-left {
+  width: 420px;
+  flex-shrink: 0;
+  background: #1a56db;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  color: #ffffff;
+}
+
+.auth-left .brand-logo {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.auth-left h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.auth-left p {
+  font-size: 14px;
+  opacity: 0.8;
+  text-align: center;
+  margin: 0 0 40px;
+}
+
+.auth-left .auth-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.auth-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+  opacity: 0.9;
+}
+
+.auth-feature-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* ---- Right panel (form) ---- */
+.auth-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  overflow-y: auto;
+}
+
+.auth-form-wrap {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-form-wrap h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1f36;
+  margin: 0 0 6px;
+}
+
+.auth-sub {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 32px;
+}
+
+/* ---- Form fields ---- */
+.auth-field {
+  margin-bottom: 16px;
+}
+
+.auth-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.auth-field input,
+.auth-field select {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #e5e9f0;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: #1a1f36;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+}
+
+.auth-field input:focus,
+.auth-field select:focus {
+  border-color: #1a56db;
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+.auth-field input::placeholder { color: #9ca3af; }
+
+/* ---- Submit button ---- */
+.btn-auth {
+  width: 100%;
+  height: 46px;
+  background: #1a56db;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+  margin-top: 8px;
+}
+
+.btn-auth:hover:not(:disabled) { background: #1240a0; }
+.btn-auth:disabled { opacity: 0.65; cursor: not-allowed; }
+
+/* ---- Switch link ---- */
+.auth-switch {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 24px;
+}
+
+.auth-switch a {
+  color: #1a56db;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-switch a:hover { text-decoration: underline; }
+
+/* ---- Error/success alert ---- */
+.auth-alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-alert.error   { background: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
+.auth-alert.success { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+
+/* ---- Role select grid ---- */
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.role-option {
+  border: 2px solid #e5e9f0;
+  border-radius: 10px;
+  padding: 14px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  text-align: center;
+  user-select: none;
+}
+
+.role-option:hover { border-color: #1a56db; background: #f0f5ff; }
+
+.role-option.selected {
+  border-color: #1a56db;
+  background: #e8f0fe;
+}
+
+.role-option .role-icon { font-size: 22px; margin-bottom: 6px; }
+
+.role-option .role-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* ---- Divider ---- */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e5e9f0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .auth-left { display: none; }
+  .auth-right { padding: 32px 20px; }
+}

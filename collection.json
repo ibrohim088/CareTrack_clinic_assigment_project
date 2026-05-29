@@ -1,0 +1,324 @@
+{
+  "info": {
+    "name": "CareTrack Clinic - FULL Backend API",
+    "description": "100% To'liq Collection - Barcha endpointlar, testlar va token avtomatik saqlash",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "🔐 AUTH",
+      "item": [
+        {
+          "name": "01. Register Patient",
+          "method": "POST",
+          "url": "{{base_url}}/auth/register",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"fullName\": \"Test Patient {{timestamp}}\",\n  \"email\": \"patient{{timestamp}}@caretrack.uz\",\n  \"password\": \"123456\",\n  \"phone\": \"+998901234567\",\n  \"role\": \"patient\"\n}"
+          }
+        },
+        {
+          "name": "02. Login Admin",
+          "method": "POST",
+          "url": "{{base_url}}/auth/login",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"admin@caretrack.uz\",\n  \"password\": \"123456\"\n}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) { pm.environment.set('admin_token', pm.response.json().data.token); console.log('✅ Admin Token Saved'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03. Login Clinician",
+          "method": "POST",
+          "url": "{{base_url}}/auth/login",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"clinician@caretrack.uz\",\n  \"password\": \"123456\"\n}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) { pm.environment.set('clinician_token', pm.response.json().data.token); console.log('✅ Clinician Token Saved'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04. Login Patient",
+          "method": "POST",
+          "url": "{{base_url}}/auth/login",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"patient@caretrack.uz\",\n  \"password\": \"123456\"\n}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) { pm.environment.set('patient_token', pm.response.json().data.token); console.log('✅ Patient Token Saved'); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05. Get Me",
+          "method": "GET",
+          "url": "{{base_url}}/auth/me"
+        },
+        {
+          "name": "06. Forgot Password",
+          "method": "POST",
+          "url": "{{base_url}}/auth/forgot-password",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"patient@caretrack.uz\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "👤 PROFILE",
+      "item": [
+        {
+          "name": "Get My Profile",
+          "method": "GET",
+          "url": "{{base_url}}/profile/me"
+        },
+        {
+          "name": "Update My Profile",
+          "method": "PUT",
+          "url": "{{base_url}}/profile/me",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"fullName\": \"Updated Full Name\",\n  \"phone\": \"+998991112233\"\n}"
+          }
+        },
+        {
+          "name": "Get Clinician Profile",
+          "method": "GET",
+          "url": "{{base_url}}/profile/clinician/{{clinician_id}}"
+        },
+        {
+          "name": "Get Patient Profile",
+          "method": "GET",
+          "url": "{{base_url}}/profile/patient/{{patient_id}}"
+        }
+      ]
+    },
+    {
+      "name": "👨‍⚕️ CLINICIANS",
+      "item": [
+        {
+          "name": "Get All Clinicians",
+          "method": "GET",
+          "url": "{{base_url}}/clinicians"
+        },
+        {
+          "name": "Get Clinician By ID",
+          "method": "GET",
+          "url": "{{base_url}}/clinicians/{{clinician_id}}"
+        },
+        {
+          "name": "Create Clinician (Admin)",
+          "method": "POST",
+          "url": "{{base_url}}/clinicians",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"specialization\": \"Kardiologiya\",\n  \"licenseNumber\": \"CL-{{timestamp}}\",\n  \"experience\": 10\n}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧍 PATIENTS",
+      "item": [
+        {
+          "name": "Get All Patients",
+          "method": "GET",
+          "url": "{{base_url}}/patients"
+        },
+        {
+          "name": "Get Patient By ID",
+          "method": "GET",
+          "url": "{{base_url}}/patients/{{patient_id}}"
+        },
+        {
+          "name": "Create Patient",
+          "method": "POST",
+          "url": "{{base_url}}/patients",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"dateOfBirth\": \"1995-05-15\",\n  \"gender\": \"male\",\n  \"bloodType\": \"O+\"\n}"
+          }
+        },
+        {
+          "name": "Get Patient Full Profile (with history)",
+          "method": "GET",
+          "url": "{{base_url}}/patients/{{patient_id}}/profile"
+        }
+      ]
+    },
+    {
+      "name": "📅 SCHEDULES",
+      "item": [
+        {
+          "name": "Get All Schedules",
+          "method": "GET",
+          "url": "{{base_url}}/schedules"
+        },
+        {
+          "name": "Get My Schedule (Clinician)",
+          "method": "GET",
+          "url": "{{base_url}}/schedules/my"
+        },
+        {
+          "name": "Create Schedule",
+          "method": "POST",
+          "url": "{{base_url}}/schedules",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"date\": \"2026-06-10\",\n  \"timeSlots\": [\n    {\"start\": \"09:00\", \"end\": \"10:00\"},\n    {\"start\": \"10:30\", \"end\": \"11:30\"}\n  ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "📅 APPOINTMENTS",
+      "item": [
+        {
+          "name": "Get All Appointments",
+          "method": "GET",
+          "url": "{{base_url}}/appointments"
+        },
+        {
+          "name": "Book Appointment",
+          "method": "POST",
+          "url": "{{base_url}}/appointments",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"clinician\": \"{{clinician_id}}\",\n  \"date\": \"2026-06-15\",\n  \"timeSlot\": \"10:00\",\n  \"reason\": \"Konsultatsiya\"\n}"
+          }
+        },
+        {
+          "name": "Update Appointment Status",
+          "method": "PATCH",
+          "url": "{{base_url}}/appointments/{{appointment_id}}/status",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"status\": \"confirmed\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔬 DIAGNOSES",
+      "item": [
+        {
+          "name": "Get All Diagnoses",
+          "method": "GET",
+          "url": "{{base_url}}/diagnoses"
+        },
+        {
+          "name": "Create Diagnosis",
+          "method": "POST",
+          "url": "{{base_url}}/diagnoses",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"patient\": \"{{patient_id}}\",\n  \"description\": \"Gipertoniya 2-daraja\",\n  \"severity\": \"moderate\",\n  \"icdCode\": \"I10\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "💊 PRESCRIPTIONS",
+      "item": [
+        {
+          "name": "Get All Prescriptions",
+          "method": "GET",
+          "url": "{{base_url}}/prescriptions"
+        },
+        {
+          "name": "Create Prescription",
+          "method": "POST",
+          "url": "{{base_url}}/prescriptions",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"patient\": \"{{patient_id}}\",\n  \"medicines\": [\n    {\"name\": \"Losartan\", \"dosage\": \"50mg\", \"frequency\": \"1 kuniga 1 marta\"}\n  ]\n}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "📋 MEDICAL RECORDS",
+      "item": [
+        {
+          "name": "Get All Medical Records",
+          "method": "GET",
+          "url": "{{base_url}}/medical-records"
+        },
+        {
+          "name": "Create Medical Record",
+          "method": "POST",
+          "url": "{{base_url}}/medical-records",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"patient\": \"{{patient_id}}\",\n  \"type\": \"lab\",\n  \"title\": \"Qon tahlili\",\n  \"description\": \"Natija normal\"\n}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "👥 USERS (Admin Only)",
+      "item": [
+        {
+          "name": "Get All Users",
+          "method": "GET",
+          "url": "{{base_url}}/users"
+        },
+        {
+          "name": "Get User By ID",
+          "method": "GET",
+          "url": "{{base_url}}/users/{{user_id}}"
+        }
+      ]
+    }
+  ]
+}

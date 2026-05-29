@@ -1,0 +1,195 @@
+/* DoctorsView */
+.doctors-page { padding: 24px; }
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1f36;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.search-bar { margin-bottom: 16px; }
+
+.search-bar input {
+  width: 100%;
+  max-width: 360px;
+  padding: 10px 14px;
+  border: 1px solid #e5e9f0;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-bar input:focus { border-color: #1a56db; }
+
+.table-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px #0001;
+  overflow: hidden;
+}
+
+.table { width: 100%; border-collapse: collapse; }
+
+.table th {
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: left;
+  border-bottom: 1px solid #f3f4f6;
+  background: #fafafa;
+}
+
+.table td {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #374151;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.doc-name { display: flex; align-items: center; gap: 10px; }
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.name   { font-weight: 600; color: #1a1f36; }
+.email  { font-size: 12px; color: #9ca3af; }
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge.available   { background: #f0fdf4; color: #16a34a; }
+.badge.unavailable { background: #fef2f2; color: #dc2626; }
+
+.actions { display: flex; gap: 8px; }
+
+.btn-edit {
+  padding: 6px 12px;
+  border: 1px solid #e5e9f0;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.btn-edit:hover { border-color: #1a56db; color: #1a56db; }
+
+.btn-delete {
+  padding: 6px 12px;
+  border: 1px solid #fee2e2;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  background: #fff;
+  color: #dc2626;
+}
+
+.btn-delete:hover { background: #fef2f2; }
+
+.btn-primary {
+  background: #1a56db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #e5e9f0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0006;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 460px;
+  max-width: 95vw;
+  box-shadow: 0 20px 60px #0002;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e9f0;
+}
+
+.modal-header h3 { margin: 0; font-size: 16px; font-weight: 700; }
+
+.close-btn { background: none; border: none; font-size: 18px; cursor: pointer; color: #9ca3af; }
+
+.modal-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid #e5e9f0;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+
+.form-group label { font-size: 13px; font-weight: 600; color: #374151; }
+
+.form-group input,
+.form-group select {
+  border: 1px solid #e5e9f0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
